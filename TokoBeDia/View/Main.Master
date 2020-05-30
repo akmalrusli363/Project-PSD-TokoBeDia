@@ -1,0 +1,69 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="TokoBeDia.View.Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>TokoBeDia - #1 E-C0mmerce Nasional!</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="/View/Style.css" />
+</head>
+<body>
+    <header>
+        <div>
+            <h1 class="brand">TokoBeDia</h1>
+            <p class="brand">#1 E-Commerce Nasional! Dari kita, oleh kita, untuk kita!</p>
+        </div>
+    </header>
+    <form id="root" runat="server">
+        <nav>
+            <% if (Session["user"] == null) { %>
+            <table style="width: 100%; text-align: center; background-color: coral;" class="menus">
+                <tr>
+                    <td style="width: 20%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
+                    <td style="width: 40%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Products</a></td>
+                    <td style="width: 20%;" class="menus"><a href="/View/Register.aspx" class="menus">Register</a></td>
+                    <td style="width: 20%;" class="menus"><a href="/View/Login.aspx" class="menus">Login</a></td>
+                </tr>
+            </table>
+            <% } %>
+            <% else if (Session["user"] != null && TokoBeDia.Repository.UserRepository.isAdmin(Int32.Parse(Session["user"].ToString()))) { %>
+            <table style="width: 100%; text-align: center; background-color: orange;">
+                <tr>
+                    <td style="width: 15%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
+                    <td style="width: 15%;" class="menus"><a href="/View/Users/ManageUsers.aspx" class="menus">Users</a></td>
+                    <td style="width: 15%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Products</a></td>
+                    <td style="width: 15%;" class="menus"><a href="/View/ProductTypes/ViewProductType.aspx" class="menus">Product Types</a></td>
+                    <td style="width: 15%;" class="menus"><a href="/View/Profile.aspx" class="menus">Profile</a></td>
+                    <td style="width: 15%;" class="menus">
+                        <asp:LinkButton ID="LogoutButton" runat="server" OnClick="logout" CssClass="menus">Logout</asp:LinkButton>
+                    </td>
+                </tr>
+            </table>
+            <% } %>
+            <% else { %>
+            <table style="width: 100%; text-align: center; background-color: coral;">
+                <tr>
+                    <td style="width: 20%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
+                    <td style="width: 40%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Featured on TokoBeDia</a></td>
+                    <td style="width: 20%;" class="menus"><a href="/View/Profile.aspx" class="menus">Profile</a></td>
+                    <td style="width: 20%;" class="menus">
+                        <asp:LinkButton ID="LogoutButton1" runat="server" OnClick="logout" CssClass="menus">Logout</asp:LinkButton>
+                    </td>
+                </tr>
+            </table>
+            <% } %>
+        </nav>
+        <hr />
+        <div id="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <hr />
+    <footer id="footer">
+        <i>Copyright 2020 TokoBeDia</i>
+    </footer>
+</body>
+</html>
