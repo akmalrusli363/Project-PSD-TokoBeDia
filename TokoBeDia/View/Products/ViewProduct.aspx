@@ -43,6 +43,15 @@
                 <asp:Button ID="DeleteProductButton" runat="server" Text="Delete" OnClick="deleteProduct" Enabled="False" />
             </div>
             <% } %>
+
+            <%else
+                { %>
+            <br />
+            <div class="form-buttons">
+                <asp:Button ID="AddToCartButton" Visible="false" runat="server" Text="Add to Cart" OnClick="AddToCartButton_Click"  />&nbsp
+            </div>
+            <% } %>
+
         </div>
     </div>
 </asp:Content>

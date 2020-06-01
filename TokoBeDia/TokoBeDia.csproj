@@ -91,6 +91,8 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="View\Carts\AddCart.aspx" />
+    <Content Include="View\Carts\ViewCart.aspx" />
     <Content Include="View\Style.css" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\Login.aspx" />
@@ -101,6 +103,17 @@
     </EntityDeploy>
     <Content Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="App_Code\ViewCarts.xsc">
+      <DependentUpon>ViewCarts.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\ViewCarts.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ViewCarts.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\ViewCarts.xss">
+      <DependentUpon>ViewCarts.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -124,9 +137,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\ViewCarts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewCarts.xsd</DependentUpon>
+    </Content>
+    <Compile Include="Controller\CartController.cs" />
+    <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\CartHandler.cs" />
+    <Compile Include="Model\Cart.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\DetailTransaction.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -154,6 +178,7 @@
     <Compile Include="Model\ProductType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\CartRepository.cs" />
     <Compile Include="Repository\ProductTypeRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\SessionStateRepository.cs" />
@@ -166,6 +191,20 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\DBSingleton.cs" />
+    <Compile Include="View\Carts\AddCart.aspx.cs">
+      <DependentUpon>AddCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Carts\AddCart.aspx.designer.cs">
+      <DependentUpon>AddCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Carts\ViewCart.aspx.cs">
+      <DependentUpon>ViewCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Carts\ViewCart.aspx.designer.cs">
+      <DependentUpon>ViewCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,9 +304,7 @@
       <DependentUpon>UpdateProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

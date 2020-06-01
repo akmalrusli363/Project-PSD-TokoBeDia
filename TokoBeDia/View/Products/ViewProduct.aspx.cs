@@ -48,6 +48,19 @@ namespace TokoBeDia.View.Products
             Response.Redirect(Request.RawUrl);
         }
 
+        protected void AddToCartButton_Click(object sender, EventArgs e)
+        {
+            if (currProduct == null)
+            {
+                return;
+            }
+
+            int currProductID = currProduct.ID;
+            Response.Redirect("../Carts/AddCart.aspx?id=" + currProductID);
+            currProduct = null;
+        }
+
+
         protected void linkSelect_Click(object sender, EventArgs e)
         {
             int productID = Int32.Parse((sender as LinkButton).CommandArgument);
@@ -61,6 +74,9 @@ namespace TokoBeDia.View.Products
 
             UpdateProductButton.Enabled = true;
             DeleteProductButton.Enabled = true;
+            AddToCartButton.Visible = true;
         }
+
+
     }
 }
