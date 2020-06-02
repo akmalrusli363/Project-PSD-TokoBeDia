@@ -20,9 +20,33 @@ namespace TokoBeDia.Repository
             return db.Carts.Where(cart => cart.ProductID == id).FirstOrDefault();
         }
 
+        public static Cart getCartProductByUserID(int productid,int userid)
+        {
+            return db.Carts.Where(cart => (cart.ProductID == productid && cart.UserID == userid)).FirstOrDefault();
+        }
+
+        public static void updateCartProductQty(int productId,int userId,int qty)
+        {
+            Cart p = getCartProductByUserID(productId,userId);
+            p.Quantity = qty;
+            db.SaveChanges();
+        }
+
         public static void addCartProduct(Cart cart)
         {
             db.Carts.Add(cart);
+            db.SaveChanges();
+        }
+
+        public static Cart createCartProduct(int userId,int productId,int qty)
+        {
+            return CartFactory.CreateCart(userId, productId, qty);
+        }
+
+        public static void deleteCartProduct(int id,int userid)
+        {
+            Cart c = getCartProductByUserID(id,userid);
+            db.Carts.Remove(c);
             db.SaveChanges();
         }
     }

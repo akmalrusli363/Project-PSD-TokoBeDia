@@ -92,6 +92,7 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="View\Carts\AddCart.aspx" />
+    <Content Include="View\Carts\UpdateCart.aspx" />
     <Content Include="View\Carts\ViewCart.aspx" />
     <Content Include="View\Style.css" />
     <Content Include="View\Home.aspx" />
@@ -148,6 +149,7 @@
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\CartHandler.cs" />
+    <Compile Include="Handler\ProductHandler.cs" />
     <Compile Include="Model\Cart.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -197,6 +199,13 @@
     </Compile>
     <Compile Include="View\Carts\AddCart.aspx.designer.cs">
       <DependentUpon>AddCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Carts\UpdateCart.aspx.cs">
+      <DependentUpon>UpdateCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Carts\UpdateCart.aspx.designer.cs">
+      <DependentUpon>UpdateCart.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Carts\ViewCart.aspx.cs">
       <DependentUpon>ViewCart.aspx</DependentUpon>
