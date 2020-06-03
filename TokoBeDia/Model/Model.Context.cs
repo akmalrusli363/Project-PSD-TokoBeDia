@@ -46,6 +46,8 @@ public partial class DatabaseEntities : DbContext
 
     public virtual DbSet<Cart> Carts { get; set; }
 
+    public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+
 }
 
 }

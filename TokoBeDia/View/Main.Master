@@ -31,12 +31,13 @@
             <% else if (Session["user"] != null && TokoBeDia.Repository.UserRepository.isAdmin(Int32.Parse(Session["user"].ToString()))) { %>
             <table style="width: 100%; text-align: center; background-color: orange;">
                 <tr>
-                    <td style="width: 15%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
-                    <td style="width: 15%;" class="menus"><a href="/View/Users/ManageUsers.aspx" class="menus">Users</a></td>
-                    <td style="width: 15%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Products</a></td>
-                    <td style="width: 15%;" class="menus"><a href="/View/ProductTypes/ViewProductType.aspx" class="menus">Product Types</a></td>
-                    <td style="width: 15%;" class="menus"><a href="/View/Profile.aspx" class="menus">Profile</a></td>
-                    <td style="width: 15%;" class="menus">
+                    <td style="width: 14%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
+                    <td style="width: 14%;" class="menus"><a href="/View/Users/ManageUsers.aspx" class="menus">Users</a></td>
+                    <td style="width: 14%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Products</a></td>
+                    <td style="width: 14%;" class="menus"><a href="/View/PaymentTypes/ViewPaymentType.aspx" class="menus">Payment Types</a></td>
+                    <td style="width: 14%;" class="menus"><a href="/View/ProductTypes/ViewProductType.aspx" class="menus">Product Types</a></td>
+                    <td style="width: 14%;" class="menus"><a href="/View/Profile.aspx" class="menus">Profile</a></td>
+                    <td style="width: 14%;" class="menus">
                         <asp:LinkButton ID="LogoutButton" runat="server" OnClick="logout" CssClass="menus">Logout</asp:LinkButton>
                     </td>
                 </tr>

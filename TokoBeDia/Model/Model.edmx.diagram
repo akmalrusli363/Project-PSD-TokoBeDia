@@ -16,6 +16,8 @@
         <AssociationConnector Association="DatabaseModel.FK__HeaderTra__UserI__534D60F1" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK__Products__Produc__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK__Users__RoleID__4D94879B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseModel.PaymentType" Width="1.5" PointX="7.125" PointY="4.25" />
+        <AssociationConnector Association="DatabaseModel.FK__HeaderTra__Payme__01142BA1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

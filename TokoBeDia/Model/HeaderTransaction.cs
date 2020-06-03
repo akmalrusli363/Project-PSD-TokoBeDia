@@ -33,6 +33,8 @@ public partial class HeaderTransaction
 
     public System.DateTime Date { get; set; }
 
+    public int PaymentTypeID { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -40,6 +42,8 @@ public partial class HeaderTransaction
     public virtual ICollection<DetailTransaction> DetailTransactions { get; set; }
 
     public virtual User User { get; set; }
+
+    public virtual PaymentType PaymentType { get; set; }
 
 }
 

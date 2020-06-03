@@ -94,6 +94,7 @@
     <Content Include="View\Carts\AddCart.aspx" />
     <Content Include="View\Carts\UpdateCart.aspx" />
     <Content Include="View\Carts\ViewCart.aspx" />
+    <Content Include="View\PaymentTypes\ViewPaymentType.aspx" />
     <Content Include="View\Style.css" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\Login.aspx" />
@@ -174,6 +175,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\PaymentType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Product.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -181,6 +185,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\CartRepository.cs" />
+    <Compile Include="Repository\PaymentTypeRepository.cs" />
     <Compile Include="Repository\ProductTypeRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\SessionStateRepository.cs" />
@@ -234,6 +239,13 @@
     </Compile>
     <Compile Include="View\Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentTypes\ViewPaymentType.aspx.cs">
+      <DependentUpon>ViewPaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PaymentTypes\ViewPaymentType.aspx.designer.cs">
+      <DependentUpon>ViewPaymentType.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Products\UpdateProduct.aspx.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>

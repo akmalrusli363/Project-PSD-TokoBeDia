@@ -29,7 +29,15 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeID" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -106,7 +114,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetailTra__Trans__36B12243">
+        <Association Name="FK__DetailTra__Trans__72C60C4A">
           <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -120,7 +128,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HeaderTra__UserI__38996AB5">
+        <Association Name="FK__HeaderTra__Payme__14270015">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="HeaderTransactions">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__UserI__71D1E811">
           <End Role="Users" Type="Self.Users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -166,6 +188,7 @@
           <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailTransactions" EntityType="Self.DetailTransactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HeaderTransactions" EntityType="Self.HeaderTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -182,11 +205,15 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetailTra__Trans__36B12243" Association="Self.FK__DetailTra__Trans__36B12243">
+          <AssociationSet Name="FK__DetailTra__Trans__72C60C4A" Association="Self.FK__DetailTra__Trans__72C60C4A">
             <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__HeaderTra__UserI__38996AB5" Association="Self.FK__HeaderTra__UserI__38996AB5">
+          <AssociationSet Name="FK__HeaderTra__Payme__14270015" Association="Self.FK__HeaderTra__Payme__14270015">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__UserI__71D1E811" Association="Self.FK__HeaderTra__UserI__71D1E811">
             <End Role="Users" EntitySet="Users" />
             <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
           </AssociationSet>
@@ -223,6 +250,8 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Trans__5629CD9C" FromRole="HeaderTransactions" ToRole="DetailTransactions" />
           <NavigationProperty Name="User" Relationship="Self.FK__HeaderTra__UserI__534D60F1" FromRole="HeaderTransactions" ToRole="Users" />
+          <Property Name="PaymentTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PaymentType" Relationship="DatabaseModel.FK__HeaderTra__Payme__01142BA1" FromRole="HeaderTransaction" ToRole="PaymentType" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -365,6 +394,11 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+          <EntitySet Name="PaymentTypes" EntityType="DatabaseModel.PaymentType" />
+          <AssociationSet Name="FK__HeaderTra__Payme__01142BA1" Association="DatabaseModel.FK__HeaderTra__Payme__01142BA1">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Cart">
           <Key>
@@ -401,6 +435,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeID" />
+          </Key>
+          <Property Name="PaymentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="DatabaseModel.FK__HeaderTra__Payme__01142BA1" FromRole="PaymentType" ToRole="HeaderTransaction" />
+        </EntityType>
+        <Association Name="FK__HeaderTra__Payme__01142BA1">
+          <End Type="DatabaseModel.PaymentType" Role="PaymentType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DatabaseModel.HeaderTransaction" Role="HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeID" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="PaymentTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -419,6 +475,7 @@
           <EntitySetMapping Name="HeaderTransactions">
             <EntityTypeMapping TypeName="DatabaseModel.HeaderTransaction">
               <MappingFragment StoreEntitySet="HeaderTransactions">
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -472,6 +529,14 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="DatabaseModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="PaymentType1" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
