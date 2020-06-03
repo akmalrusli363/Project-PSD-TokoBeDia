@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0a4a4aa6f74a4551ac64519b7337c481" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseModel.DetailTransaction" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.HeaderTransaction" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Product" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.ProductType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Role" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK__DetailTra__Produ__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__DetailTra__Trans__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__HeaderTra__UserI__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Products__Produc__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK__Users__RoleID__4D94879B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseModel.PaymentType" Width="1.5" PointX="7.125" PointY="4.25" />
+        <AssociationConnector Association="DatabaseModel.FK__HeaderTra__Payme__01142BA1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

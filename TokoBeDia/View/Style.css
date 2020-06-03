@@ -1,0 +1,59 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header, #content {
+    margin: 1em;
+}
+
+.brand, hr {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
+nav {
+    top: 0px;
+    position: sticky;
+}
+
+footer, #footer {
+    text-align: center;
+    background-color: darkseagreen;
+    padding: 10px;
+}
+
+input[type="button"],  input[type="submit"] {
+    padding: 3px 10px;
+}
+
+.menus {
+    padding: 5px;
+}
+
+.menus a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.warning-text {
+    font-size: small;
+    color: red;
+}
+
+.contentForm-short {
+    width: 300px;
+}
+
+.contentForm-long {
+    width: 400px;
+}
+
+.form-buttons {
+    text-align: center;
+}
