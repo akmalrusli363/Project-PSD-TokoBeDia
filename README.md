@@ -77,6 +77,16 @@ Untuk bagian-bagian yang telah dikerjakan, edit file ini dengan mencentang bagia
 
 Untuk detail dari laman ini, dapat dilihat pada file dokumentasi [E202-COMP6114-BD01-00.docx](E202-COMP6114-BD01-00.docx) dalam repository ini.
 
+## Catatan
+
+Karena project ini dilanjutkan dengan menggunakan base project dari saya sendiri (pemilik repository), maka untuk mengakses admin dalam project ini diperlukan bantuan dari aplikasi **Visual Studio 2015** untuk ubah user role menjadi admin atau gunakan informasi login dibawah:
+
+> Untuk login sebagai admin, gunakan email dan password dibawah:
+>
+> - **Email**: admin@tokobedia.jp (domain fiktif karena email divalidasikan formatnya)
+> - **Password**: admin
+
+
 ## Team members (Group 7)
 
 1. 2201727815 - Kalvin Effendi
