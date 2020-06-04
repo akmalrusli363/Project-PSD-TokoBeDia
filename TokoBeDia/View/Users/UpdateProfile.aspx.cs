@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.Profiles
 {
@@ -30,7 +29,7 @@ namespace TokoBeDia.View.Profiles
         private void fillProfileDetails()
         {
             String userSession = Session["user"].ToString();
-            userLoggedIn = UserRepository.getUserByID(Int32.Parse(userSession));
+            userLoggedIn = UserController.getUserByID(Int32.Parse(userSession));
             String email = userLoggedIn.Email;
             String username = userLoggedIn.Name;
             String gender = userLoggedIn.Gender;
@@ -46,34 +45,18 @@ namespace TokoBeDia.View.Profiles
             string username = UsernameBox.Text;
             string gender = GenderButtons.Text;
 
-            if (!Regex.Match(email, "^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]+$").Success) {
-                ErrorMessage.Text = "Invalid email!";
-                return;
-            }
-            else if (!Regex.Match(username, "[a-zA-Z0-9\\s]+").Success) {
-                ErrorMessage.Text = "Invalid username!";
-                return;
-            }
-            else if (!(gender.Equals("Male") || gender.Equals("Female"))) {
-                ErrorMessage.Text = "You must select a gender!";
-                return;
-            }
-            else if (!email.Equals(userLoggedIn.Email) && !UserRepository.verifyEmail(email)) {
-                ErrorMessage.Text = "Your new email is already registered by another user! Please refresh to revert the changes!";
-                return;
-            }
+            string error = UserController.updateUserProfile(userLoggedIn, email, username, gender);
 
-            try {
-                Repository.UserRepository.updateUser(userLoggedIn.ID, email, username, gender);
+            if (error == "")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(),
+                    "alertMessage", "alert('Update profile successful!');", true);
+                Response.Redirect("/View/Profile.aspx");
             }
-            catch (Exception ex) {
-                Console.WriteLine(ex.ToString());
-                ErrorMessage.Text = "Database update on server failure, please try again!";
-                return;
+            else
+            {
+                ErrorMessage.Text = error;
             }
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(),
-                "alertMessage", "alert('Update profile successful!');", true);
-            Response.Redirect("/View/Profile.aspx");
         }
     }
 }

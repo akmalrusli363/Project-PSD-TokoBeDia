@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.Products
 {
@@ -15,7 +15,7 @@ namespace TokoBeDia.View.Products
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || !UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || !UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;
@@ -35,7 +35,7 @@ namespace TokoBeDia.View.Products
         {
             if (!IsPostBack)
             {
-                currentProduct = ProductRepository.getProductByID(productID);
+                currentProduct = ProductController.getProductByID(productID);
                 ProductNameBox.Text = currentProduct.Name;
                 PriceBox.Text = currentProduct.Price.ToString();
                 StockBox.Text = currentProduct.Stock.ToString();
@@ -48,33 +48,16 @@ namespace TokoBeDia.View.Products
             int price = Int32.Parse(PriceBox.Text);
             int stock = Int32.Parse(StockBox.Text);
 
-            if (name.Length <= 0)
-            {
-                ErrorMessage.Text = "Name must be filled!";
-                return;
-            }
-            else if (price < 1000 || price % 1000 != 0)
-            {
-                ErrorMessage.Text = "Price must at least 1000 and multiply of 1000!";
-                return;
-            }
-            else if (stock < 0)
-            {
-                ErrorMessage.Text = "Stock must at least 1!";
-                return;
-            }
+            string error = ProductController.updateProduct(currentProduct, name, price, stock);
 
-            try
+            if (error == "")
             {
-                ProductRepository.updateProduct(currentProduct.ID, name, price, stock);
+                Response.Redirect("ViewProduct.aspx");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
-                ErrorMessage.Text = "Database update on server failure, please try again!";
-                return;
+                ErrorMessage.Text = error;
             }
-            Response.Redirect("ViewProduct.aspx");
         }
     }
 }

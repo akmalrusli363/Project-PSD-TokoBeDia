@@ -34,17 +34,22 @@
             </div>
 
             <%if (Session["user"] != null &&
-                                        TokoBeDia.Repository.UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+                                        TokoBeDia.Controller.UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
                 { %>
             <br />
             <div class="form-buttons">
-                <asp:Button ID="InsertProductButton" runat="server" Text="Insert" OnClick="insertProduct" />&nbsp
-                <asp:Button ID="UpdateProductButton" runat="server" Text="Update" OnClick="updateProduct" Enabled="False" />&nbsp
-                <asp:Button ID="DeleteProductButton" runat="server" Text="Delete" OnClick="deleteProduct" Enabled="False" />
+                <div>
+                    <asp:Button ID="InsertProductButton" runat="server" Text="Insert" OnClick="insertProduct" />&nbsp
+                    <asp:Button ID="UpdateProductButton" runat="server" Text="Update" OnClick="updateProduct" Enabled="False" />&nbsp
+                    <asp:Button ID="DeleteProductButton" runat="server" Text="Delete" OnClick="deleteProduct" Enabled="False" />
+                </div>
+                <div>
+                    <asp:Label ID="ErrorMessage" runat="server" CssClass="warning-text"></asp:Label>
+                </div>
             </div>
             <% } %>
 
-            <%else
+            <%else if (Session["user"] != null)
                 { %>
             <br />
             <div class="form-buttons">

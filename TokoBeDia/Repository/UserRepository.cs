@@ -10,34 +10,7 @@ namespace TokoBeDia.Repository
     public class UserRepository
     {
         private static DatabaseEntities db = TokoBeDia.Singleton.DBSingleton.getInstance();
-
-        private static readonly String[] USER_STATUS = { "active", "blocked" };
-
-        public static String getUserStatus(int level)
-        {
-            return USER_STATUS[level];
-        }
-
-        public static void signUp(String email, String name, String password, String gender) 
-        {
-            User u = UserFactory.createUser(email, name, password, gender);
-            db.Users.Add(u);
-            db.SaveChanges();
-        }
-
-        public static User login(String email, String password)
-        {
-            User u = db.Users.Where(user => user.Email == email && user.Password == password).FirstOrDefault();
-            if (u == null) {
-                throw new MemberAccessException("Wrong username or password!");
-            }
-            if (u.Status.Equals("blocked")) {
-                throw new MemberAccessException("User blocked! Please contact admin to unlock your user!");
-            }
-            
-            return u;
-        }
-
+        
         public static List<User> getAllUsers()
         {
             return db.Users.ToList();
@@ -48,45 +21,51 @@ namespace TokoBeDia.Repository
             return db.Users.Where(user => user.ID == id).FirstOrDefault();
         }
 
-        public static void updateUser(int id, String email, String name, String gender)
+        public static User createUser(String email, String name, String password, String gender) 
         {
-            User u = db.Users.Where(user => user.ID == id).FirstOrDefault();
-            u.Email = email;
-            u.Name = name;
-            u.Gender = gender;
+            return UserFactory.createUser(email, name, password, gender);
+        }
+
+        public static void addUser(User u)
+        {
+            db.Users.Add(u);
             db.SaveChanges();
         }
 
-        public static void updatePassword(int id, String password)
+        public static User getUserFromEmailAndPassword(String email, String password)
         {
-            User u = db.Users.Where(user => user.ID == id).FirstOrDefault();
-            u.Password = password;
+            return db.Users.Where(user => user.Email == email && user.Password == password).FirstOrDefault();
+        }
+
+        public static void updateUser(User user, string newEmail, string newName, string newGender)
+        {
+            user.Email = newEmail;
+            user.Name = newName;
+            user.Gender = newGender;
             db.SaveChanges();
         }
 
-        public static void setUserStatus(int id, bool blocked)
+        public static void updatePassword(User u, string newPassword)
         {
-            User u = getUserByID(id);
-            u.Status = blocked ? USER_STATUS[1] : USER_STATUS[0];
+            u.Password = newPassword;
             db.SaveChanges();
         }
 
-        public static void updateUserRole(int id, bool admin)
+        public static void setUserStatus(User u, string newStatus)
         {
-            User u = getUserByID(id);
+            u.Status = newStatus;
+            db.SaveChanges();
+        }
+
+        public static void updateUserRole(User u, bool admin)
+        {
             u.RoleID = admin ? 1 : 2;
             db.SaveChanges();
         }
 
-        public static bool verifyEmail(String email)
+        public static bool verifyEmail(string email)
         {
             return (db.Users.Where(user => user.Email == email).FirstOrDefault() == null);
-        }
-
-        public static bool isAdmin(int id)
-        {
-            User u = getUserByID(id);
-            return (u != null && u.Role.ID == 1);
         }
     }
 }

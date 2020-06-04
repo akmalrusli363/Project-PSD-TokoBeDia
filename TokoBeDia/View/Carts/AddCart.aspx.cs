@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
 using TokoBeDia.Controller;
 
@@ -15,7 +14,7 @@ namespace TokoBeDia.View.Carts
         private static Product currentProduct = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;
@@ -35,8 +34,8 @@ namespace TokoBeDia.View.Carts
         {
             if (!IsPostBack)
             {
-                currentProduct = ProductRepository.getProductByID(productID);
-                ProductType currProductType = ProductTypeRepository.getProductTypeByID(currentProduct.ProductTypeID);
+                currentProduct = ProductController.getProductByID(productID);
+                ProductType currProductType = ProductTypeController.getProductTypeByID(currentProduct.ProductTypeID);
                 ProductNameBox.Text = currentProduct.Name;
                 PriceBox.Text = currentProduct.Price.ToString();
                 StockBox.Text = currentProduct.Stock.ToString();

@@ -6,8 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Handler;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
 using TokoBeDia.Controller;
+
+// hati-hati, dilarang keras akses module repository tanpa buat handler dan controller lho!
+using TokoBeDia.Repository;
 
 namespace TokoBeDia.View.Carts
 {
@@ -16,7 +18,7 @@ namespace TokoBeDia.View.Carts
         private static Product currentProduct = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;
@@ -36,8 +38,8 @@ namespace TokoBeDia.View.Carts
         {
             if (!IsPostBack)
             {
-                currentProduct = ProductRepository.getProductByID(productID);
-                ProductType currProductType = ProductTypeRepository.getProductTypeByID(currentProduct.ProductTypeID);
+                currentProduct = ProductController.getProductByID(productID);
+                ProductType currProductType = ProductTypeController.getProductTypeByID(currentProduct.ProductTypeID);
                 int userId = Int32.Parse(Session["user"].ToString());
                 Cart cart = CartRepository.getCartProductByUserID(productID, userId);
                 ProductNameBox.Text = currentProduct.Name;

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.Users
 {
@@ -15,18 +15,19 @@ namespace TokoBeDia.View.Users
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || !UserRepository.isAdmin(Int32.Parse(Session["user"].ToString()))) {
+            if (Session["user"] == null || !UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
+            {
                 Response.Redirect("/View/Home.aspx");
                 return;
             }
-            UserTable.DataSource = UserRepository.getAllUsers();
+            UserTable.DataSource = UserController.getAllUsers();
             UserTable.DataBind();
         }
 
         protected void linkSelect_Click(object sender, EventArgs e)
         {
             int userID = Int32.Parse((sender as LinkButton).CommandArgument);
-            selectedUser = UserRepository.getUserByID(userID);
+            selectedUser = UserController.getUserByID(userID);
             fillProfileDetails(selectedUser);
 
             EmailBox.Enabled = true;
@@ -55,22 +56,27 @@ namespace TokoBeDia.View.Users
 
         protected void updateUser(object sender, EventArgs e)
         {
-            if (selectedUser.ID == Int32.Parse(Session["user"].ToString())) {
+            if (selectedUser.ID == Int32.Parse(Session["user"].ToString()))
+            {
                 ErrorMessage.Text = "You cannot change current role/status of your user logged in!";
                 return;
-            } else {
+            }
+            else
+            {
                 bool isAdmin = (RoleBox.SelectedIndex == 0);
                 bool isBlocked = (StatusButtons.SelectedIndex == 1);
 
-                try {
-                    UserRepository.updateUserRole(selectedUser.ID, isAdmin);
-                    UserRepository.setUserStatus(selectedUser.ID, isBlocked);
-                } catch (Exception ex) {
-                    Console.WriteLine(ex.ToString());
-                    ErrorMessage.Text = "Database update on server failure, please try again!";
+                string error = UserController.updateUserStatus(selectedUser, isAdmin, isBlocked);
+
+                if (error == "")
+                {
+                    Response.Redirect(Request.RawUrl);
+                }
+                else
+                {
+                    ErrorMessage.Text = error;
                     return;
                 }
-                Response.Redirect(Request.RawUrl);
             }
         }
     }

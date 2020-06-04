@@ -28,9 +28,14 @@
             </div>
             <br />
             <div class="form-buttons">
-                <asp:Button ID="InsertProductTypeButton" runat="server" Text="Insert" OnClick="insertProductType" />&nbsp
-                <asp:Button ID="UpdateProductTypeButton" runat="server" Text="Update" OnClick="updateProductType" Enabled="False" />&nbsp
-                <asp:Button ID="DeleteProductTypeButton" runat="server" Text="Delete" OnClick="deleteProductType" Enabled="False" />
+                <div>
+                    <asp:Button ID="InsertProductTypeButton" runat="server" Text="Insert" OnClick="insertProductType" />&nbsp
+                    <asp:Button ID="UpdateProductTypeButton" runat="server" Text="Update" OnClick="updateProductType" Enabled="False" />&nbsp
+                    <asp:Button ID="DeleteProductTypeButton" runat="server" Text="Delete" OnClick="deleteProductType" Enabled="False" />
+                </div>
+                <div>
+                    <asp:Label ID="ErrorMessage" runat="server" CssClass="warning-text"></asp:Label>
+                </div>
             </div>
         </div>
     </div>

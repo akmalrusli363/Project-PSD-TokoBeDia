@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.ProductTypes
 {
@@ -15,13 +15,13 @@ namespace TokoBeDia.View.ProductTypes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || !UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || !UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;
             }
 
-            ProductTypeTable.DataSource = ProductTypeRepository.getAllProducts();
+            ProductTypeTable.DataSource = ProductTypeController.getAllProductTypes();
             ProductTypeTable.DataBind();
         }
 
@@ -49,15 +49,23 @@ namespace TokoBeDia.View.ProductTypes
                 return;
             }
 
-            ProductTypeRepository.deleteProductType(currProductType.ID);
-            currProductType = null;
-            Response.Redirect(Request.RawUrl);
+            string error = ProductTypeController.deleteProductType(currProductType);
+
+            if (error == "")
+            {
+                currProductType = null;
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                ErrorMessage.Text = error;
+            }
         }
 
         protected void linkSelect_Click(object sender, EventArgs e)
         {
             int productID = Int32.Parse((sender as LinkButton).CommandArgument);
-            currProductType = ProductTypeRepository.getProductTypeByID(productID);
+            currProductType = ProductTypeController.getProductTypeByID(productID);
 
             ProductTypeNameBox.Text = currProductType.Name;
             DescriptionBox.Text = currProductType.Description;

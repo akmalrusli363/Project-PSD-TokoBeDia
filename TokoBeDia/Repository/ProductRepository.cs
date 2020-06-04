@@ -21,33 +21,34 @@ namespace TokoBeDia.Repository
             return db.Products.Where(product => product.ID == id).FirstOrDefault();
         }
 
-        public static void addProduct(int typeID, string name, int price, int stock)
+        public static Product createProduct(int typeID, string name, int price, int stock)
         {
-            Product p = ProductFactory.createProduct(typeID, name, price, stock);
+            return ProductFactory.createProduct(typeID, name, price, stock);
+        }
+
+        public static void addProduct(Product p)
+        {
             db.Products.Add(p);
             db.SaveChanges();
         }
 
-        public static void updateProduct(int id, string name, int price, int stock)
+        public static void updateProduct(Product p, string newName, int newPrice, int newStock)
         {
-            Product p = getProductByID(id);
-            p.Name = name;
-            p.Price = price;
-            p.Stock = stock;
+            p.Name = newName;
+            p.Price = newPrice;
+            p.Stock = newStock;
             db.SaveChanges();
         }
 
-        public static void deleteProduct(int id)
+        public static void deleteProduct(Product p)
         {
-            Product p = getProductByID(id);
             db.Products.Remove(p);
             db.SaveChanges();
         }
 
-        public static List<String> pickRandomProduct(int nums, string field)
+        public static List<Product> pickRandomProduct(int nums)
         {
-            List<String> randomProducts = db.Products.OrderBy(p => Guid.NewGuid()).Take(nums)
-                .ToList().Select(p =>  String.Format("{0} (Rp {1})", p.Name, p.Price)).ToList();
+            List<Product> randomProducts = db.Products.OrderBy(p => Guid.NewGuid()).Take(nums).ToList();
             return randomProducts;
         }
     }

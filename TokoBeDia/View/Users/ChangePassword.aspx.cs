@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.Profiles
 {
@@ -21,7 +21,7 @@ namespace TokoBeDia.View.Profiles
                 return;
             } else {
                 String userSession = Session["user"].ToString();
-                userLoggedIn = UserRepository.getUserByID(Int32.Parse(userSession));
+                userLoggedIn = UserController.getUserByID(Int32.Parse(userSession));
             }
         }
 
@@ -41,7 +41,7 @@ namespace TokoBeDia.View.Profiles
 
 
             try {
-                Repository.UserRepository.updatePassword(userLoggedIn.ID, newPassword);
+                Repository.UserRepository.updatePassword(userLoggedIn, newPassword);
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.ToString());

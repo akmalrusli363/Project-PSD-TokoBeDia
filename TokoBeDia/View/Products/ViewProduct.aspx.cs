@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.Products
 {
@@ -15,7 +15,7 @@ namespace TokoBeDia.View.Products
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ProductTable.DataSource = ProductRepository.getAllProducts();
+            ProductTable.DataSource = ProductController.getAllProducts();
             ProductTable.DataBind();
         }
 
@@ -43,9 +43,17 @@ namespace TokoBeDia.View.Products
                 return;
             }
 
-            ProductRepository.deleteProduct(currProduct.ID);
-            currProduct = null;
-            Response.Redirect(Request.RawUrl);
+            string error = ProductController.deleteProduct(currProduct);
+
+            if (error == "")
+            {
+                currProduct = null;
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                ErrorMessage.Text = error;
+            }
         }
 
         protected void AddToCartButton_Click(object sender, EventArgs e)
@@ -64,8 +72,8 @@ namespace TokoBeDia.View.Products
         protected void linkSelect_Click(object sender, EventArgs e)
         {
             int productID = Int32.Parse((sender as LinkButton).CommandArgument);
-            currProduct = ProductRepository.getProductByID(productID);
-            ProductType currProductType = ProductTypeRepository.getProductTypeByID(currProduct.ProductTypeID);
+            currProduct = ProductController.getProductByID(productID);
+            ProductType currProductType = ProductTypeController.getProductTypeByID(currProduct.ProductTypeID);
 
             ProductNameBox.Text = currProduct.Name;
             PriceBox.Text = currProduct.Price.ToString();

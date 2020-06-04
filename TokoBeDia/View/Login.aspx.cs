@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
+using TokoBeDia.Handler;
 using TokoBeDia.Model;
 
 namespace TokoBeDia.View
@@ -20,7 +21,7 @@ namespace TokoBeDia.View
             else if (rememberUserCookie != null 
                 && !String.IsNullOrEmpty(rememberUserCookie.Value)) {
                 String[] rememberUser = rememberUserCookie.Value.ToString().Split('\\');
-                User login = Repository.UserRepository.login(rememberUser[0], rememberUser[1]);
+                User login = UserHandler.login(rememberUser[0], rememberUser[1]);
                 Session["user"] = login.ID;
                 Response.Redirect("Home.aspx");
             }
@@ -34,13 +35,10 @@ namespace TokoBeDia.View
             User login = null;
 
             try {
-                login = Repository.UserRepository.login(email, password);
+                login = UserController.login(email, password);
             }
             catch (MemberAccessException ex) {
-                errorMessage = ex.Message;
-            }
-            catch (Exception) {
-                errorMessage = "Failed to login! (Invalid username/password!)";
+                errorMessage = ex.ToString();
             }
 
             if (login != null) {

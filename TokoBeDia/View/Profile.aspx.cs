@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View
 {
@@ -19,7 +19,7 @@ namespace TokoBeDia.View
             }
 
             if (!IsPostBack) {
-                User currUser = UserRepository.getUserByID(Int32.Parse(Session["user"].ToString()));
+                User currUser = UserController.getUserByID(Int32.Parse(Session["user"].ToString()));
                 String email = currUser.Email;
                 String username = currUser.Name;
                 String gender = currUser.Gender;

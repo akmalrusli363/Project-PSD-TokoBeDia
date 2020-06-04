@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
+using TokoBeDia.Controller;
 using TokoBeDia.Model;
+
+// hati-hati, dilarang keras akses module repository tanpa buat handler dan controller lho!
+using TokoBeDia.Repository;
 
 namespace TokoBeDia.View.PaymentTypes
 {
@@ -14,7 +17,7 @@ namespace TokoBeDia.View.PaymentTypes
         private static PaymentType currPaymentType = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || !UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || !UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;

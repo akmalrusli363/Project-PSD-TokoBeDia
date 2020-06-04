@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View
 {
@@ -16,13 +16,13 @@ namespace TokoBeDia.View
             if (Session["user"] != null)
             {
                 String userSession = Session["user"].ToString();
-                User userLoggedIn = UserRepository.getUserByID(Int32.Parse(userSession));
+                User userLoggedIn = UserController.getUserByID(Int32.Parse(userSession));
                 String username = userLoggedIn.Name;
                 usernameLabel.Text = username;
             }
             if (!IsPostBack)
             {
-                listProducts.DataSource = ProductRepository.pickRandomProduct(5, "[Name]");
+                listProducts.DataSource = ProductController.getRandomFiveProducts();
                 listProducts.DataBind();
             }
         }

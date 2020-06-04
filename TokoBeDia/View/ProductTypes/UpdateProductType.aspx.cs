@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TokoBeDia.Repository;
 using TokoBeDia.Model;
+using TokoBeDia.Controller;
 
 namespace TokoBeDia.View.ProductTypes
 {
@@ -15,7 +15,7 @@ namespace TokoBeDia.View.ProductTypes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] == null || !UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+            if (Session["user"] == null || !UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
             {
                 Response.Redirect("/View/Home.aspx");
                 return;
@@ -36,7 +36,7 @@ namespace TokoBeDia.View.ProductTypes
         {
             if (!IsPostBack)
             {
-                currentProductType = ProductTypeRepository.getProductTypeByID(productTypeID);
+                currentProductType = ProductTypeController.getProductTypeByID(productTypeID);
                 if (currentProductType == null) {
                     Response.Redirect("ViewProductType.aspx");
                     return;
@@ -51,35 +51,16 @@ namespace TokoBeDia.View.ProductTypes
             string name = ProductTypeNameBox.Text;
             string description = DescriptionBox.Text;
 
-            if (name.Length < 5)
-            {
-                ErrorMessage.Text = "Name must at least 5 characters!";
-                return;
-            }
-            else if (description.Length <= 0)
-            {
-                ErrorMessage.Text = "Description must not be empty!";
-                return;
-            }
-            else if (!name.Equals(currentProductType.Name) &&
-                !ProductTypeRepository.validateProductTypeName(name))
-            {
-                ErrorMessage.Text = String.Format("These product type name has already taken! " + 
-                    "Use old name: '{0}' or other non-existent product type instead.", currentProductType.Name);
-                return;
-            }
+            string error = ProductTypeController.updateProductType(currentProductType, name, description);
 
-            try
+            if (error == "")
             {
-                ProductTypeRepository.updateProductType(currentProductType.ID, name, description);
+                Response.Redirect("ViewProductType.aspx");
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
-                ErrorMessage.Text = "Database update on server failure, please try again!";
-                return;
+                ErrorMessage.Text = error;
             }
-            Response.Redirect("ViewProductType.aspx");
         }
     }
 }

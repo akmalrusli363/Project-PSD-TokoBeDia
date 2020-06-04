@@ -145,12 +145,17 @@
       <DependentUpon>ViewCarts.xsd</DependentUpon>
     </Content>
     <Compile Include="Controller\CartController.cs" />
+    <Compile Include="Controller\ProductController.cs" />
+    <Compile Include="Controller\ProductTypeController.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\CartHandler.cs" />
     <Compile Include="Handler\ProductHandler.cs" />
+    <Compile Include="Handler\ProductTypeHandler.cs" />
+    <Compile Include="Handler\UserHandler.cs" />
     <Compile Include="Model\Cart.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -188,7 +193,7 @@
     <Compile Include="Repository\PaymentTypeRepository.cs" />
     <Compile Include="Repository\ProductTypeRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
-    <Compile Include="Repository\SessionStateRepository.cs" />
+    <Compile Include="Session\SessionState.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Model\Role.cs">
       <DependentUpon>Model.tt</DependentUpon>

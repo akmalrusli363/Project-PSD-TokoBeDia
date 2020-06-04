@@ -16,7 +16,7 @@
 
 
     <% if (Session["user"] != null &&
-                TokoBeDia.Repository.UserRepository.isAdmin(Int32.Parse(Session["user"].ToString())))
+                TokoBeDia.Controller.UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
         { %>
     <p>TokoBeDia Admin Menu:</p>
     <ul>
@@ -25,6 +25,8 @@
         <li><a href="/View/Products/ViewProduct.aspx">Manage Products</a></li>
         <li><a href="/View/ProductTypes/InsertProductType.aspx">Insert Product Types</a></li>
         <li><a href="/View/ProductTypes/ViewProductType.aspx">Manage Product Types</a></li>
+        <li><a href="/View/PaymentTypes/InsertPaymentType.aspx">Insert Payment Types</a></li>
+        <li><a href="/View/PaymentTypes/ViewPaymentType.aspx">Manage Payment Types</a></li>
     </ul>
     <% } %>
     <% else
