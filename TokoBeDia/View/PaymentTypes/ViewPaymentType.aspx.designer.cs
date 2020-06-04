@@ -22,22 +22,22 @@ namespace TokoBeDia.View.PaymentTypes {
         protected global::System.Web.UI.WebControls.GridView PaymentTypeTable;
         
         /// <summary>
-        /// PaymentTypeLabel control.
+        /// PaymentTypeNameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PaymentTypeLabel;
+        protected global::System.Web.UI.WebControls.Label PaymentTypeNameLabel;
         
         /// <summary>
-        /// PaymentTypeBox control.
+        /// PaymentTypeNameBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PaymentTypeBox;
+        protected global::System.Web.UI.WebControls.TextBox PaymentTypeNameBox;
         
         /// <summary>
         /// InsertPaymentTypeButton control.
