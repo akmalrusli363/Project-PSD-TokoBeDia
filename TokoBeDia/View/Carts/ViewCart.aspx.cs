@@ -40,13 +40,15 @@ namespace TokoBeDia.View.Carts
         protected void Button1_Click(object sender, EventArgs e)
         {
             int userID = Int32.Parse(Session["user"].ToString());
+            int paymentID = Int32.Parse(listPaymentType.Text);
             ErrorMessage.Text = CartController.checkout(listPaymentType.Text,userID);
             if (ErrorMessage.Text=="")
             {
+                TransactionController.CheckOut(userID,paymentID);
                 GridView1.DataBind();
+                ErrorMessage.Text = "Checkout Success";
             }
         }
-
         protected void CheckoutButton2_Click(object sender, EventArgs e)
         {
             CheckoutButton2.Visible = false;

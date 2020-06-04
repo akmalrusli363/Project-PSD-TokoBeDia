@@ -279,9 +279,9 @@ namespace TokoBeDia.App_Code {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PaymentTypesDataTable : global::System.Data.TypedTableBase<PaymentTypesRow> {
             
-            private global::System.Data.DataColumn columnPaymentType;
-            
             private global::System.Data.DataColumn columnPaymentTypeID;
+            
+            private global::System.Data.DataColumn columnPaymentTypeName;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -318,17 +318,17 @@ namespace TokoBeDia.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PaymentTypeColumn {
+            public global::System.Data.DataColumn PaymentTypeIDColumn {
                 get {
-                    return this.columnPaymentType;
+                    return this.columnPaymentTypeID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PaymentTypeIDColumn {
+            public global::System.Data.DataColumn PaymentTypeNameColumn {
                 get {
-                    return this.columnPaymentTypeID;
+                    return this.columnPaymentTypeName;
                 }
             }
             
@@ -369,11 +369,11 @@ namespace TokoBeDia.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PaymentTypesRow AddPaymentTypesRow(string PaymentType) {
+            public PaymentTypesRow AddPaymentTypesRow(string PaymentTypeName) {
                 PaymentTypesRow rowPaymentTypesRow = ((PaymentTypesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        PaymentType,
-                        null};
+                        null,
+                        PaymentTypeName};
                 rowPaymentTypesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPaymentTypesRow);
                 return rowPaymentTypesRow;
@@ -403,27 +403,27 @@ namespace TokoBeDia.App_Code {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnPaymentType = base.Columns["PaymentType"];
                 this.columnPaymentTypeID = base.Columns["PaymentTypeID"];
+                this.columnPaymentTypeName = base.Columns["PaymentTypeName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnPaymentType = new global::System.Data.DataColumn("PaymentType", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentType);
                 this.columnPaymentTypeID = new global::System.Data.DataColumn("PaymentTypeID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPaymentTypeID);
+                this.columnPaymentTypeName = new global::System.Data.DataColumn("PaymentTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaymentTypeName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPaymentTypeID}, true));
-                this.columnPaymentType.AllowDBNull = false;
-                this.columnPaymentType.MaxLength = 50;
                 this.columnPaymentTypeID.AutoIncrement = true;
                 this.columnPaymentTypeID.AutoIncrementSeed = -1;
                 this.columnPaymentTypeID.AutoIncrementStep = -1;
                 this.columnPaymentTypeID.AllowDBNull = false;
                 this.columnPaymentTypeID.ReadOnly = true;
                 this.columnPaymentTypeID.Unique = true;
+                this.columnPaymentTypeName.AllowDBNull = false;
+                this.columnPaymentTypeName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -566,23 +566,23 @@ namespace TokoBeDia.App_Code {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PaymentType {
-                get {
-                    return ((string)(this[this.tablePaymentTypes.PaymentTypeColumn]));
-                }
-                set {
-                    this[this.tablePaymentTypes.PaymentTypeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int PaymentTypeID {
                 get {
                     return ((int)(this[this.tablePaymentTypes.PaymentTypeIDColumn]));
                 }
                 set {
                     this[this.tablePaymentTypes.PaymentTypeIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PaymentTypeName {
+                get {
+                    return ((string)(this[this.tablePaymentTypes.PaymentTypeNameColumn]));
+                }
+                set {
+                    this[this.tablePaymentTypes.PaymentTypeNameColumn] = value;
                 }
             }
         }
@@ -746,8 +746,8 @@ namespace TokoBeDia.App_Code.PaymentTypeTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "PaymentTypes";
-            tableMapping.ColumnMappings.Add("PaymentType", "PaymentType");
             tableMapping.ColumnMappings.Add("PaymentTypeID", "PaymentTypeID");
+            tableMapping.ColumnMappings.Add("PaymentTypeName", "PaymentTypeName");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -756,15 +756,15 @@ namespace TokoBeDia.App_Code.PaymentTypeTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentTypes] ([PaymentType]) VALUES (@PaymentType)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [PaymentTypes] ([PaymentTypeName]) VALUES (@PaymentTypeName)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [PaymentTypes] SET [PaymentType] = @PaymentType WHERE (([PaymentTypeID] = " +
-                "@Original_PaymentTypeID))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [PaymentTypes] SET [PaymentTypeName] = @PaymentTypeName WHERE (([PaymentTy" +
+                "peID] = @Original_PaymentTypeID))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentType", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentType", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PaymentTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PaymentTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PaymentTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -781,7 +781,7 @@ namespace TokoBeDia.App_Code.PaymentTypeTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        PaymentType, PaymentTypeID\r\nFROM            PaymentTypes";
+            this._commandCollection[0].CommandText = "SELECT        PaymentTypeID, PaymentTypeName\r\nFROM            PaymentTypes";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -864,12 +864,12 @@ namespace TokoBeDia.App_Code.PaymentTypeTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string PaymentType) {
-            if ((PaymentType == null)) {
-                throw new global::System.ArgumentNullException("PaymentType");
+        public virtual int Insert(string PaymentTypeName) {
+            if ((PaymentTypeName == null)) {
+                throw new global::System.ArgumentNullException("PaymentTypeName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(PaymentType));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(PaymentTypeName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -891,12 +891,12 @@ namespace TokoBeDia.App_Code.PaymentTypeTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string PaymentType, int Original_PaymentTypeID) {
-            if ((PaymentType == null)) {
-                throw new global::System.ArgumentNullException("PaymentType");
+        public virtual int Update(string PaymentTypeName, int Original_PaymentTypeID) {
+            if ((PaymentTypeName == null)) {
+                throw new global::System.ArgumentNullException("PaymentTypeName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(PaymentType));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(PaymentTypeName));
             }
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_PaymentTypeID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;

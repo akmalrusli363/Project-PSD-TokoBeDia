@@ -54,5 +54,14 @@ namespace TokoBeDia.Repository
             db.Carts.Remove(c);
             db.SaveChanges();
         }
+
+        public static void deleteCartProductByUser(List<Cart> cp)
+        {
+            for(int i = 0; i < cp.Count(); i++)
+            {
+                db.Carts.Remove(cp[i]);
+            }
+            db.SaveChanges();
+        }
     }
 }

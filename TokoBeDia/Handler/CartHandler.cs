@@ -41,11 +41,6 @@ namespace TokoBeDia.Handler
             CartRepository.updateCartProductQty(id,userid,qty);
         }
 
-        public static void checkout(int userid)
-        {
-            List<Cart> cp = CartRepository.getAllCartProducts(userid);
-
-        }
 
     }
 
