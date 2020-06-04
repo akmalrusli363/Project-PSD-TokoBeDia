@@ -18,8 +18,8 @@
         <br />
         <div class="contentForm-short">
             <div>
-                <asp:Label ID="PaymentTypeLabel" runat="server">Payment type name:</asp:Label><br />
-                <asp:TextBox ID="PaymentTypeBox" runat="server" Width="100%" ReadOnly="True"></asp:TextBox>
+                <asp:Label ID="PaymentTypeNameLabel" runat="server">Payment type name:</asp:Label><br />
+                <asp:TextBox ID="PaymentTypeNameBox" runat="server" Width="100%" ReadOnly="True"></asp:TextBox>
                 
                 <br />
             </div>

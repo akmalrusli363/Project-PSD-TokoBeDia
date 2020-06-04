@@ -23,7 +23,7 @@ namespace TokoBeDia.View.PaymentTypes
                 return;
             }
 
-            PaymentTypeTable.DataSource = PaymentTypeRepository.getAllPayments();
+            PaymentTypeTable.DataSource = PaymentTypeController.getAllPaymentTypes();
             PaymentTypeTable.DataBind();
         }
 
@@ -46,7 +46,7 @@ namespace TokoBeDia.View.PaymentTypes
             int paymentTypeID = Int32.Parse((sender as LinkButton).CommandArgument);
             currPaymentType = PaymentTypeRepository.getPaymentTypeByID(paymentTypeID);
 
-            PaymentTypeBox.Text = currPaymentType.PaymentType1;
+            PaymentTypeNameBox.Text = currPaymentType.PaymentTypeName;
 
             UpdatePaymentTypeButton.Enabled = true;
             DeletePaymentTypeButton.Enabled = true;

@@ -94,6 +94,7 @@
     <Content Include="View\Carts\AddCart.aspx" />
     <Content Include="View\Carts\UpdateCart.aspx" />
     <Content Include="View\Carts\ViewCart.aspx" />
+    <Content Include="View\PaymentTypes\InsertPaymentType.aspx" />
     <Content Include="View\PaymentTypes\ViewPaymentType.aspx" />
     <Content Include="View\Style.css" />
     <Content Include="View\Home.aspx" />
@@ -108,6 +109,17 @@
     </Content>
     <Content Include="App_Code\ViewCarts.xsc">
       <DependentUpon>ViewCarts.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\PaymentType.xsc">
+      <DependentUpon>PaymentType.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\PaymentType.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PaymentType.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\PaymentType.xss">
+      <DependentUpon>PaymentType.xsd</DependentUpon>
     </Content>
     <None Include="App_Code\ViewCarts.xsd">
       <SubType>Designer</SubType>
@@ -144,15 +156,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewCarts.xsd</DependentUpon>
     </Content>
+    <Content Include="App_Code\PaymentType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentType.xsd</DependentUpon>
+    </Content>
     <Compile Include="Controller\CartController.cs" />
+    <Compile Include="Controller\PaymentTypeController.cs" />
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\ProductTypeController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="Factory\CartFactory.cs" />
+    <Compile Include="Factory\PaymentTypeFactory.cs" />
     <Compile Include="Factory\ProductTypeFactory.cs" />
     <Compile Include="Factory\ProductFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\CartHandler.cs" />
+    <Compile Include="Handler\PaymentTypeHandler.cs" />
     <Compile Include="Handler\ProductHandler.cs" />
     <Compile Include="Handler\ProductTypeHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
@@ -244,6 +264,13 @@
     </Compile>
     <Compile Include="View\Main.Master.designer.cs">
       <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentTypes\InsertPaymentType.aspx.cs">
+      <DependentUpon>InsertPaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PaymentTypes\InsertPaymentType.aspx.designer.cs">
+      <DependentUpon>InsertPaymentType.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\PaymentTypes\ViewPaymentType.aspx.cs">
       <DependentUpon>ViewPaymentType.aspx</DependentUpon>

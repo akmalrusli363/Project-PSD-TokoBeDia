@@ -10,16 +10,7 @@
 namespace TokoBeDia.View.PaymentTypes {
     
     
-    public partial class ViewPaymentType {
-        
-        /// <summary>
-        /// PaymentTypeTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView PaymentTypeTable;
+    public partial class InsertPaymentType {
         
         /// <summary>
         /// PaymentTypeNameLabel control.
@@ -49,21 +40,12 @@ namespace TokoBeDia.View.PaymentTypes {
         protected global::System.Web.UI.WebControls.Button InsertPaymentTypeButton;
         
         /// <summary>
-        /// UpdatePaymentTypeButton control.
+        /// ErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdatePaymentTypeButton;
-        
-        /// <summary>
-        /// DeletePaymentTypeButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeletePaymentTypeButton;
+        protected global::System.Web.UI.WebControls.Label ErrorMessage;
     }
 }

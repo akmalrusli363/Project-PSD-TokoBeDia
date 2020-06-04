@@ -37,7 +37,7 @@
             <PropertyRef Name="PaymentTypeID" />
           </Key>
           <Property Name="PaymentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PaymentType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -440,8 +440,8 @@
             <PropertyRef Name="PaymentTypeID" />
           </Key>
           <Property Name="PaymentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PaymentType1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HeaderTransactions" Relationship="DatabaseModel.FK__HeaderTra__Payme__01142BA1" FromRole="PaymentType" ToRole="HeaderTransaction" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__HeaderTra__Payme__01142BA1">
           <End Type="DatabaseModel.PaymentType" Role="PaymentType" Multiplicity="1">
@@ -535,7 +535,7 @@
           <EntitySetMapping Name="PaymentTypes">
             <EntityTypeMapping TypeName="DatabaseModel.PaymentType">
               <MappingFragment StoreEntitySet="PaymentTypes">
-                <ScalarProperty Name="PaymentType1" ColumnName="PaymentType" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
                 <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
               </MappingFragment>
             </EntityTypeMapping>

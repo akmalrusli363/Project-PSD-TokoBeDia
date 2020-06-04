@@ -25,4 +25,30 @@
     <br /><br />
     <asp:Label ID="totalLabel" runat="server" Font-Bold="True" Text="Grand Total : Rp. "></asp:Label>
     <asp:Label ID="totalLabel1" runat="server" Font-Italic="True"></asp:Label>
-</asp:Content>
+    <br />
+    <br />
+    <br />
+    <asp:Label ID="labelPayment" Visible="false" runat="server" Font-Bold="True" Font-Italic="True" Text="Select Payment Method :"></asp:Label>
+    <br />
+    <asp:DropDownList ID="listPaymentType" Visible="false" runat="server" DataSourceID="ObjectDataSource2" DataTextField="PaymentType" DataValueField="PaymentTypeID">
+    </asp:DropDownList>
+    <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" DeleteMethod="Delete" InsertMethod="Insert" OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" TypeName="TokoBeDia.App_Code.PaymentTypeTableAdapters.PaymentTypesTableAdapter" UpdateMethod="Update">
+        <DeleteParameters>
+            <asp:Parameter Name="Original_PaymentTypeID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="PaymentType" Type="String" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="PaymentType" Type="String" />
+            <asp:Parameter Name="Original_PaymentTypeID" Type="Int32" />
+        </UpdateParameters>
+    </asp:ObjectDataSource>
+    <br />
+    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Checkout" Visible="False" />
+    <br />
+    <asp:Button ID="CheckoutButton2" runat="server" OnClick="CheckoutButton2_Click" Text="Checkout" />
+    <br />
+        <asp:Label ID="ErrorMessage" runat="server" CssClass="warning-text"></asp:Label>
+        </asp:Content>
