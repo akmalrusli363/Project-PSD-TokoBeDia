@@ -16,9 +16,14 @@ namespace TokoBeDia.Handler
             CartRepository.addCartProduct(cartProduct);
         }
 
-        public static Cart getCartProduct(int productid)
+        public static Cart getCartProduct(int productid,int userId)
         {
-            return CartRepository.getCartProductByID(productid);
+            return CartRepository.getCartProductByUserID(productid,userId);
+        }
+
+        public static Cart getCartProductByUser(int userId)
+        {
+            return CartRepository.getCartProductByUser(userId);
         }
 
         public static void updateProduct(int productid ,int userid, int qty)
@@ -34,6 +39,12 @@ namespace TokoBeDia.Handler
         public static void updateCartProductQty(int id, int userid,int qty)
         {
             CartRepository.updateCartProductQty(id,userid,qty);
+        }
+
+        public static void checkout(int userid)
+        {
+            List<Cart> cp = CartRepository.getAllCartProducts(userid);
+
         }
 
     }

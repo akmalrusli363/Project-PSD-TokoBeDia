@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TokoBeDia.Controller;
 using TokoBeDia.Handler;
 
 namespace TokoBeDia.View.Carts
@@ -12,8 +13,6 @@ namespace TokoBeDia.View.Carts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             int sum = 0;
             for (int i = 0; i < GridView1.Rows.Count; i++)
             {
@@ -36,6 +35,24 @@ namespace TokoBeDia.View.Carts
         {
             int id = Int32.Parse((sender as LinkButton).CommandArgument);
             Response.Redirect("UpdateCart.aspx?id=" + id);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            int userID = Int32.Parse(Session["user"].ToString());
+            ErrorMessage.Text = CartController.checkout(listPaymentType.Text,userID);
+            if (ErrorMessage.Text=="")
+            {
+                GridView1.DataBind();
+            }
+        }
+
+        protected void CheckoutButton2_Click(object sender, EventArgs e)
+        {
+            CheckoutButton2.Visible = false;
+            Button1.Visible = true;
+            labelPayment.Visible = true;
+            listPaymentType.Visible = true;
         }
     }
 }

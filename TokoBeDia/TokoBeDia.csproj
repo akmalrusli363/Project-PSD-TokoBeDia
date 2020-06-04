@@ -109,6 +109,17 @@
     <Content Include="App_Code\ViewCarts.xsc">
       <DependentUpon>ViewCarts.xsd</DependentUpon>
     </Content>
+    <Content Include="App_Code\PaymentType.xsc">
+      <DependentUpon>PaymentType.xsd</DependentUpon>
+    </Content>
+    <None Include="App_Code\PaymentType.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PaymentType.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Code\PaymentType.xss">
+      <DependentUpon>PaymentType.xsd</DependentUpon>
+    </Content>
     <None Include="App_Code\ViewCarts.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -143,6 +154,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewCarts.xsd</DependentUpon>
+    </Content>
+    <Content Include="App_Code\PaymentType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PaymentType.xsd</DependentUpon>
     </Content>
     <Compile Include="Controller\CartController.cs" />
     <Compile Include="Controller\ProductController.cs" />
