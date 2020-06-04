@@ -48,7 +48,7 @@
                 <tr>
                     <td style="width: 20%;" class="menus"><a href="/View/Home.aspx" class="menus">Home</a></td>
                     <td style="width: 20%;" class="menus"><a href="/View/Products/ViewProduct.aspx" class="menus">Products</a></td>
-                    <td style="width: 20%;" class="menus"><a href="/View/Cart/ViewCart.aspx" class="menus">My Cart</a></td>
+                    <td style="width: 20%;" class="menus"><a href="/View/Carts/ViewCart.aspx" class="menus">My Cart</a></td>
                     <td style="width: 20%;" class="menus"><a href="/View/Profile.aspx" class="menus">Profile</a></td>
                     <td style="width: 20%;" class="menus">
                         <asp:LinkButton ID="LogoutButton1" runat="server" OnClick="logout" CssClass="menus">Logout</asp:LinkButton>

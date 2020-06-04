@@ -58,6 +58,15 @@ namespace TokoBeDia.Controller
         {
             User login;
 
+            if (email.Equals(""))
+            {
+                throw new MemberAccessException("Email cannot be empty!");
+            }
+            else if (password.Equals(""))
+            {
+                throw new MemberAccessException("Password cannot be empty!");
+            }
+
             try
             {
                 login = UserHandler.login(email, password);
@@ -78,7 +87,35 @@ namespace TokoBeDia.Controller
         {
             try
             {
+                UserController.updateUserRole(user, isAdmin);
+                UserController.setUserStatus(user, isBlocked);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "Database update on server failure, please try again!";
+            }
+            return "";
+        }
+
+        public static string updateUserRole(User user, bool isAdmin)
+        {
+            try
+            {
                 UserHandler.updateUserRole(user.ID, isAdmin);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "Database update on server failure, please try again!";
+            }
+            return "";
+        }
+
+        public static string setUserStatus(User user, bool isBlocked)
+        {
+            try
+            {
                 UserHandler.setUserStatus(user.ID, isBlocked);
             }
             catch (Exception ex)

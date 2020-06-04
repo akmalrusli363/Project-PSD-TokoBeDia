@@ -24,7 +24,7 @@ namespace TokoBeDia.View.Users
             UserTable.DataBind();
         }
 
-        protected void linkSelect_Click(object sender, EventArgs e)
+        protected void selectUser(object sender, EventArgs e)
         {
             int userID = Int32.Parse((sender as LinkButton).CommandArgument);
             selectedUser = UserController.getUserByID(userID);
@@ -77,6 +77,58 @@ namespace TokoBeDia.View.Users
                     ErrorMessage.Text = error;
                     return;
                 }
+            }
+        }
+
+        protected void toggleUserStatus(object sender, EventArgs e)
+        {
+            int userID = Int32.Parse((sender as LinkButton).CommandArgument);
+            User user = UserController.getUserByID(userID);
+
+            if (user.ID == Int32.Parse(Session["user"].ToString()))
+            {
+                ErrorMessage.Text = "You cannot change current role/status of your user logged in!";
+                return;
+            }
+
+            bool isBlocked = (user.Status == "blocked") ? true : false;
+
+            string error = UserController.setUserStatus(user, !isBlocked);
+
+            if (error == "")
+            {
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                ErrorMessage.Text = error;
+                return;
+            }
+        }
+
+        protected void toggleUserRole(object sender, EventArgs e)
+        {
+            int userID = Int32.Parse((sender as LinkButton).CommandArgument);
+            User user = UserController.getUserByID(userID);
+
+            if (user.ID == Int32.Parse(Session["user"].ToString()))
+            {
+                ErrorMessage.Text = "You cannot change current role/status of your user logged in!";
+                return;
+            }
+
+            bool isAdmin = (user.Role.ID == 1) ? true : false;
+
+            string error = UserController.updateUserRole(user, !isAdmin);
+
+            if (error == "")
+            {
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                ErrorMessage.Text = error;
+                return;
             }
         }
     }

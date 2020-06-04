@@ -38,7 +38,7 @@ namespace TokoBeDia.View
                 login = UserController.login(email, password);
             }
             catch (MemberAccessException ex) {
-                errorMessage = ex.ToString();
+                errorMessage = ex.Message;
             }
 
             if (login != null) {

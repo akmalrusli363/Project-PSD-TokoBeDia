@@ -6,11 +6,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Manage Users</h2>
     <div>
-        <asp:gridview id="UserTable" runat="server">
+        <asp:gridview id="UserTable" runat="server" AutoGenerateColumns="false">
             <Columns>
-                <asp:TemplateField>
+                <asp:TemplateField HeaderText="Select User">
                     <ItemTemplate>
-                        <asp:LinkButton ID="linkSelect" runat="server" Text="Select" CommandArgument='<%#Eval("ID") %>' OnClick="linkSelect_Click" />
+                        <asp:LinkButton ID="linkSelect" runat="server" Text="Select" CommandArgument='<%#Eval("ID") %>' OnClick="selectUser" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="ID" HeaderText="User ID" InsertVisible="False" ReadOnly="True" />
+                <asp:BoundField DataField="RoleID" HeaderText="RoleID" />
+                <asp:BoundField DataField="Name" HeaderText="Name" />
+                <asp:BoundField DataField="Email" HeaderText="Email" />
+                <asp:BoundField DataField="Password" HeaderText="Password" />
+                <asp:BoundField DataField="Gender" HeaderText="Gender" />
+                <asp:BoundField DataField="Status" HeaderText="Status" />
+                <asp:TemplateField HeaderText="Toggle status">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="linkToggleUserStatus" runat="server" Text="Toggle status" CommandArgument='<%#Eval("ID") %>' OnClick="toggleUserStatus" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Toggle admin">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="linkToggleAdmin" runat="server" Text="Toggle admin" CommandArgument='<%#Eval("ID") %>' OnClick="toggleUserRole" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
