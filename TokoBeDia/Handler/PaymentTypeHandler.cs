@@ -31,6 +31,12 @@ namespace TokoBeDia.Handler
             PaymentTypeRepository.deletePaymentType(pt);
         }
 
+        public static void updatePaymentType(int id, string paymentTypeName)
+        {
+            PaymentType pt = PaymentTypeRepository.getPaymentTypeByID(id);
+            PaymentTypeRepository.updatePaymentType(pt, paymentTypeName);
+        }
+
         public static bool validatePaymentTypeName(string paymentTypeName)
         {
             return PaymentTypeRepository.validatePaymentTypeName(paymentTypeName);

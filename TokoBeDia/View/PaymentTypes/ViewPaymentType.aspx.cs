@@ -34,7 +34,14 @@ namespace TokoBeDia.View.PaymentTypes
 
         protected void updatePaymentType(object sender, EventArgs e)
         {
-            Response.Redirect("UpdatePaymentType.aspx");
+            if (currPaymentType == null)
+            {
+                return;
+            }
+
+            int currPaymentTypeID = currPaymentType.PaymentTypeID;
+            Response.Redirect("UpdatePaymentType.aspx?id=" + currPaymentTypeID);
+            currPaymentType = null;
         }
 
         protected void deletePaymentType(object sender, EventArgs e)

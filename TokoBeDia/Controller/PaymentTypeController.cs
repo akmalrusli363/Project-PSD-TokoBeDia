@@ -21,13 +21,13 @@ namespace TokoBeDia.Controller
 
         public static string insertPaymentType(string paymentTypeName)
         {
-            if (paymentTypeName.Length < 3)
-            {
-                return "Payment type name must at least 3 characters!";
-            }
-            else if (paymentTypeName.Length == 0)
+            if (paymentTypeName.Length <= 0)
             {
                 return "Payment type must not be empty!";
+            }
+            else if (paymentTypeName.Length < 3)
+            {
+                return "Payment type name must at least 3 characters!";
             }
             else if (!PaymentTypeHandler.validatePaymentTypeName(paymentTypeName))
             {
@@ -60,6 +60,36 @@ namespace TokoBeDia.Controller
 
             return "";
         }
+
+        public static string updatePaymentType(PaymentType pt, string paymentTypeName)
+        {
+            if (paymentTypeName.Length <= 0)
+            {
+                return "Payment type must not be empty!";
+            }
+            else if (paymentTypeName.Length < 3)
+            {
+                return "Payment type name must at least 3 characters!";
+            }
+            else if (!paymentTypeName.Equals(pt.PaymentTypeName) && !PaymentTypeHandler.validatePaymentTypeName(paymentTypeName))
+            {
+                return String.Format("These payment type name has already taken! " +
+                    "Use old name: '{0}' or other non-existent payment type instead.", pt.PaymentTypeName);
+            }
+
+            try
+            {
+                PaymentTypeHandler.updatePaymentType(pt.PaymentTypeID, paymentTypeName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "Database update on server failure, please try again!";
+            }
+            return "";
+        }
+
+
 
     }
 }

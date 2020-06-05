@@ -95,6 +95,7 @@
     <Content Include="View\Carts\UpdateCart.aspx" />
     <Content Include="View\Carts\ViewCart.aspx" />
     <Content Include="View\PaymentTypes\InsertPaymentType.aspx" />
+    <Content Include="View\PaymentTypes\UpdatePaymentType.aspx" />
     <Content Include="View\PaymentTypes\ViewPaymentType.aspx" />
     <Content Include="View\Style.css" />
     <Content Include="View\Home.aspx" />
@@ -275,6 +276,13 @@
     </Compile>
     <Compile Include="View\PaymentTypes\InsertPaymentType.aspx.designer.cs">
       <DependentUpon>InsertPaymentType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\PaymentTypes\UpdatePaymentType.aspx.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\PaymentTypes\UpdatePaymentType.aspx.designer.cs">
+      <DependentUpon>UpdatePaymentType.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\PaymentTypes\ViewPaymentType.aspx.cs">
       <DependentUpon>ViewPaymentType.aspx</DependentUpon>
