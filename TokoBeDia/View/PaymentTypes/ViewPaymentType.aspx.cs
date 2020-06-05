@@ -39,12 +39,28 @@ namespace TokoBeDia.View.PaymentTypes
 
         protected void deletePaymentType(object sender, EventArgs e)
         {
-            Response.Redirect("DeletePaymentType.aspx");
+            if (currPaymentType == null)
+            {
+                return;
+            }
+
+            string error = PaymentTypeController.deletePaymentType(currPaymentType);
+
+            if (error == "")
+            {
+                currPaymentType = null;
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                ErrorMessage.Text = error;
+            }
         }
+
         protected void linkSelect_Click(object sender, EventArgs e)
         {
             int paymentTypeID = Int32.Parse((sender as LinkButton).CommandArgument);
-            currPaymentType = PaymentTypeRepository.getPaymentTypeByID(paymentTypeID);
+            currPaymentType = PaymentTypeController.getPaymentTypeByID(paymentTypeID);
 
             PaymentTypeNameBox.Text = currPaymentType.PaymentTypeName;
 

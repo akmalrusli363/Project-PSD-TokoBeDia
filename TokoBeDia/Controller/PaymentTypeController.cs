@@ -46,5 +46,20 @@ namespace TokoBeDia.Controller
             return "";
         }
 
+        public static string deletePaymentType(PaymentType pt)
+        {
+            try
+            {
+                PaymentTypeHandler.deletePaymentType(pt.PaymentTypeID);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "Database update on server failure, please try again!";
+            }
+
+            return "";
+        }
+
     }
 }

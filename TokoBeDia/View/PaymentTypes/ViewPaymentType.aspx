@@ -25,10 +25,16 @@
             </div>
             <br />
             <div class="form-buttons">
-                <asp:Button ID="InsertPaymentTypeButton" runat="server" Text="Insert" OnClick="insertPaymentType" />&nbsp
-                <asp:Button ID="UpdatePaymentTypeButton" runat="server" Text="Update" OnClick="updatePaymentType" Enabled="False" />&nbsp
-                <asp:Button ID="DeletePaymentTypeButton" runat="server" Text="Delete" OnClick="deletePaymentType" Enabled="False" />
+                <div>
+                    <asp:Button ID="InsertPaymentTypeButton" runat="server" Text="Insert" OnClick="insertPaymentType" />&nbsp
+                    <asp:Button ID="UpdatePaymentTypeButton" runat="server" Text="Update" OnClick="updatePaymentType" Enabled="False" />&nbsp
+                    <asp:Button ID="DeletePaymentTypeButton" runat="server" Text="Delete" OnClick="deletePaymentType" Enabled="False" />
+                </div>
+                <div>
+                    <asp:Label ID="ErrorMessage" runat="server" CssClass="warning-text"></asp:Label>
+                </div>
             </div>
+            
         </div>
     </div>
 
