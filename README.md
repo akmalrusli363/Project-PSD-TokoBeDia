@@ -46,34 +46,34 @@ As a web developer, you are asked to create a website using **ASP.NET** for this
 Untuk bagian-bagian yang telah dikerjakan, edit file ini dengan mencentang bagian-bagian yang telah dikerjakan dengan menuliskan 'x' pada kotakannya.
 
 - **Administrator**
-  + [ ] View User
-  + [ ] View Payment Type
-  + [ ] Insert Payment Type
-  + [ ] Update Payment Type
-  + [ ] View Product
-  + [ ] Insert Product
-  + [ ] Update Product
-  + [ ] View Product Type
-  + [ ] Insert Product Type
-  + [ ] Update Product Type
-  + [ ] Profile
+  + [x] View User
+  + [x] View Payment Type
+  + [x] Insert Payment Type
+  + [x] Update Payment Type
+  + [x] View Product
+  + [x] Insert Product
+  + [x] Update Product
+  + [x] View Product Type
+  + [x] Insert Product Type
+  + [x] Update Product Type
+  + [x] Profile
   + [ ] Transaction Report
-  + [ ] Update Profile
-  + [ ] Change Password
+  + [x] Update Profile
+  + [x] Change Password
 
 - **Member**
-  + [ ] View Product
-  + [ ] View Cart
+  + [x] View Product
+  + [x] View Cart
   + [ ] Update Cart
-  + [ ] Add to Cart
-  + [ ] Profile
+  + [x] Add to Cart
+  + [x] Profile
   + [ ] Transaction History
-  + [ ] Change password
+  + [x] Change password
 
 - **Guest**
-  + [ ] View Product
-  + [ ] Login
-  + [ ] Register
+  + [x] View Product
+  + [x] Login
+  + [x] Register
 
 Untuk detail dari laman ini, dapat dilihat pada file dokumentasi [E202-COMP6114-BD01-00.docx](E202-COMP6114-BD01-00.docx) dalam repository ini.
 
