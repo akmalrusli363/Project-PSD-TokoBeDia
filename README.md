@@ -67,7 +67,7 @@ Untuk bagian-bagian yang telah dikerjakan, edit file ini dengan mencentang bagia
   + [ ] Update Cart
   + [x] Add to Cart
   + [x] Profile
-  + [ ] Transaction History
+  + [x] Transaction History
   + [x] Change password
 
 - **Guest**
