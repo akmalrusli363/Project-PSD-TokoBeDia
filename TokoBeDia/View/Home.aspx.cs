@@ -26,7 +26,5 @@ namespace TokoBeDia.View
                 listProducts.DataBind();
             }
         }
-
-
     }
 }

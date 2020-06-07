@@ -27,6 +27,7 @@
         <li><a href="/View/ProductTypes/ViewProductType.aspx">Manage Product Types</a></li>
         <li><a href="/View/PaymentTypes/InsertPaymentType.aspx">Insert Payment Types</a></li>
         <li><a href="/View/PaymentTypes/ViewPaymentType.aspx">Manage Payment Types</a></li>
+        <li><a href="/View/TransactionHistory/TransactionHistory.aspx">Transaction History</a></li>
     </ul>
     <% } %>
     <% else
