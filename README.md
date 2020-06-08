@@ -64,7 +64,7 @@ Untuk bagian-bagian yang telah dikerjakan, edit file ini dengan mencentang bagia
 - **Member**
   + [x] View Product
   + [x] View Cart
-  + [ ] Update Cart
+  + [x] Update Cart
   + [x] Add to Cart
   + [x] Profile
   + [x] Transaction History
