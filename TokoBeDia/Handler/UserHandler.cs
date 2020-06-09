@@ -75,7 +75,19 @@ namespace TokoBeDia.Handler
         public static bool isAdmin(int id)
         {
             User u = UserRepository.getUserByID(id);
-            return (u != null && u.Role.ID == 1);
+            if (u == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                return (u != null && u.Role.ID == 1);
+            }
+            catch (NullReferenceException e)
+            {
+                return false;
+            }
         }
 
         public static bool verifyEmail(string email)

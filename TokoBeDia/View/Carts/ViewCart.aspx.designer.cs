@@ -40,13 +40,13 @@ namespace TokoBeDia.View.Carts {
         protected global::System.Web.UI.WebControls.Label totalLabel;
         
         /// <summary>
-        /// totalLabel1 control.
+        /// totalLabelValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label totalLabel1;
+        protected global::System.Web.UI.WebControls.Label totalLabelValue;
         
         /// <summary>
         /// labelPayment control.
@@ -76,13 +76,13 @@ namespace TokoBeDia.View.Carts {
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource2;
         
         /// <summary>
-        /// Button1 control.
+        /// CheckoutButton1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button CheckoutButton1;
         
         /// <summary>
         /// CheckoutButton2 control.

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TransactionDatas" targetNamespace="http://tempuri.org/TransactionDatas.xsd" xmlns:mstns="http://tempuri.org/TransactionDatas.xsd" xmlns="http://tempuri.org/TransactionDatas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TransactionDatas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TransactionDatas" msprop:Generator_UserDSName="TransactionDatas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HeaderTransaction" msprop:Generator_TableClassName="HeaderTransactionDataTable" msprop:Generator_TableVarName="tableHeaderTransaction" msprop:Generator_TablePropName="HeaderTransaction" msprop:Generator_RowDeletingName="HeaderTransactionRowDeleting" msprop:Generator_RowChangingName="HeaderTransactionRowChanging" msprop:Generator_RowEvHandlerName="HeaderTransactionRowChangeEventHandler" msprop:Generator_RowDeletedName="HeaderTransactionRowDeleted" msprop:Generator_UserTableName="HeaderTransaction" msprop:Generator_RowChangedName="HeaderTransactionRowChanged" msprop:Generator_RowEvArgName="HeaderTransactionRowChangeEvent" msprop:Generator_RowClassName="HeaderTransactionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Transaction_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnTransaction_ID" msprop:Generator_ColumnPropNameInRow="Transaction_ID" msprop:Generator_ColumnPropNameInTable="Transaction_IDColumn" msprop:Generator_UserColumnName="Transaction ID" type="xs:int" />
+              <xs:element name="Transaction_x0020_Date" msprop:Generator_ColumnVarNameInTable="columnTransaction_Date" msprop:Generator_ColumnPropNameInRow="Transaction_Date" msprop:Generator_ColumnPropNameInTable="Transaction_DateColumn" msprop:Generator_UserColumnName="Transaction Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="User_x0020_Name" msdata:Caption="PaymentType" msprop:Generator_ColumnVarNameInTable="columnUser_Name" msprop:Generator_ColumnPropNameInRow="User_Name" msprop:Generator_ColumnPropNameInTable="User_NameColumn" msprop:Generator_UserColumnName="User Name" type="xs:string" minOccurs="0" />
+              <xs:element name="User_x0020_Email" msprop:Generator_ColumnVarNameInTable="columnUser_Email" msprop:Generator_ColumnPropNameInRow="User_Email" msprop:Generator_ColumnPropNameInTable="User_EmailColumn" msprop:Generator_UserColumnName="User Email" type="xs:string" minOccurs="0" />
+              <xs:element name="Payment_x0020_Type" msprop:Generator_ColumnVarNameInTable="columnPayment_Type" msprop:Generator_ColumnPropNameInRow="Payment_Type" msprop:Generator_ColumnPropNameInTable="Payment_TypeColumn" msprop:Generator_UserColumnName="Payment Type" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DetailTransaction" msprop:Generator_TableClassName="DetailTransactionDataTable" msprop:Generator_TableVarName="tableDetailTransaction" msprop:Generator_TablePropName="DetailTransaction" msprop:Generator_RowDeletingName="DetailTransactionRowDeleting" msprop:Generator_RowChangingName="DetailTransactionRowChanging" msprop:Generator_RowEvHandlerName="DetailTransactionRowChangeEventHandler" msprop:Generator_RowDeletedName="DetailTransactionRowDeleted" msprop:Generator_UserTableName="DetailTransaction" msprop:Generator_RowChangedName="DetailTransactionRowChanged" msprop:Generator_RowEvArgName="DetailTransactionRowChangeEvent" msprop:Generator_RowClassName="DetailTransactionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Transaction_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnTransaction_ID" msprop:Generator_ColumnPropNameInRow="Transaction_ID" msprop:Generator_ColumnPropNameInTable="Transaction_IDColumn" msprop:Generator_UserColumnName="Transaction ID" type="xs:int" />
+              <xs:element name="Product_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnProduct_Name" msprop:Generator_ColumnPropNameInRow="Product_Name" msprop:Generator_ColumnPropNameInTable="Product_NameColumn" msprop:Generator_UserColumnName="Product Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Product_x0020_Quantity" msprop:Generator_ColumnVarNameInTable="columnProduct_Quantity" msprop:Generator_ColumnPropNameInRow="Product_Quantity" msprop:Generator_ColumnPropNameInTable="Product_QuantityColumn" msprop:Generator_UserColumnName="Product Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Product_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnProduct_Price" msprop:Generator_ColumnPropNameInRow="Product_Price" msprop:Generator_ColumnPropNameInTable="Product_PriceColumn" msprop:Generator_UserColumnName="Product Price" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnTotal_Price" msprop:Generator_ColumnPropNameInRow="Total_Price" msprop:Generator_ColumnPropNameInTable="Total_PriceColumn" msprop:Generator_UserColumnName="Total Price" type="xs:int" minOccurs="0" />
+              <xs:element name="Product_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnProduct_ID" msprop:Generator_ColumnPropNameInRow="Product_ID" msprop:Generator_ColumnPropNameInTable="Product_IDColumn" msprop:Generator_UserColumnName="Product ID" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:HeaderTransaction" />
+      <xs:field xpath="mstns:Transaction_x0020_ID" />
+    </xs:unique>
+    <xs:unique name="DetailTransaction_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DetailTransaction" />
+      <xs:field xpath="mstns:Transaction_x0020_ID" />
+      <xs:field xpath="mstns:Product_x0020_ID" />
+    </xs:unique>
+    <xs:keyref name="FK_HeaderTransaction_DetailTransaction" refer="Constraint1" msprop:rel_Generator_UserChildTable="DetailTransaction" msprop:rel_Generator_ChildPropName="GetDetailTransactionRows" msprop:rel_Generator_UserRelationName="FK_HeaderTransaction_DetailTransaction" msprop:rel_Generator_ParentPropName="HeaderTransactionRow" msprop:rel_Generator_RelationVarName="relationFK_HeaderTransaction_DetailTransaction" msprop:rel_Generator_UserParentTable="HeaderTransaction">
+      <xs:selector xpath=".//mstns:DetailTransaction" />
+      <xs:field xpath="mstns:Transaction_x0020_ID" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -22,7 +22,7 @@ namespace TokoBeDia.Factory
         {
             return new TokoBeDia.Model.DetailTransaction()
             {
-                TransactionID =transactionid,
+                TransactionID = transactionid,
                 ProductID = productId,
                 Quantity = qty
             };

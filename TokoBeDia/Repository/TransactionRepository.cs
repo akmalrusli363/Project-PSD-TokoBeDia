@@ -23,5 +23,15 @@ namespace TokoBeDia.Repository
 
             return transactionDetail;
         }
+
+        public static List<HeaderTransaction> GetAllTransactions()
+        {
+            return db.HeaderTransactions.ToList();
+        }
+
+        public static List<HeaderTransaction> GetAllTransactionsByUserID(int userID)
+        {
+            return db.HeaderTransactions.Where(ht => ht.User.ID == userID).ToList();
+        }
     }
 }

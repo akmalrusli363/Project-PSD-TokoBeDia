@@ -37,7 +37,7 @@ namespace TokoBeDia.View.TransactionHistory
 
         protected void toTransactionReport(object sender, EventArgs e)
         {
-
+            Response.Redirect("/View/TransactionHistory/TransactionReportView.aspx");
         }
     }
 }

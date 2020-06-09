@@ -13,6 +13,12 @@ namespace TokoBeDia.View.Carts
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null || UserController.isAdmin(Int32.Parse(Session["user"].ToString())))
+            {
+                Response.Redirect("/View/Home.aspx");
+                return;
+            }
+
             int sum = 0;
             for (int i = 0; i < GridView1.Rows.Count; i++)
             {
@@ -20,7 +26,7 @@ namespace TokoBeDia.View.Carts
                 subTotal = Int32.Parse(GridView1.Rows[i].Cells[4].Text);
                 sum = sum + subTotal;
             }
-            totalLabel1.Text = sum.ToString();
+            totalLabelValue.Text = sum.ToString();
         }
 
         protected void lbDelete_Click(object sender, EventArgs e)
@@ -37,7 +43,7 @@ namespace TokoBeDia.View.Carts
             Response.Redirect("UpdateCart.aspx?id=" + id);
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void CheckoutButton1_Click(object sender, EventArgs e)
         {
             int userID = Int32.Parse(Session["user"].ToString());
             int paymentID = Int32.Parse(listPaymentType.Text);
@@ -52,7 +58,7 @@ namespace TokoBeDia.View.Carts
         protected void CheckoutButton2_Click(object sender, EventArgs e)
         {
             CheckoutButton2.Visible = false;
-            Button1.Visible = true;
+            CheckoutButton1.Visible = true;
             labelPayment.Visible = true;
             listPaymentType.Visible = true;
         }

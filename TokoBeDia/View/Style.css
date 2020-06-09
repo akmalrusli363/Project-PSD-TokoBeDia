@@ -19,6 +19,7 @@ header, #content {
 nav {
     top: 0px;
     position: sticky;
+    z-index: 99;
 }
 
 footer, #footer {

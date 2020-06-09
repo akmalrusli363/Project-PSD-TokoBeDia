@@ -14,16 +14,26 @@ namespace TokoBeDia.Handler
         {
             List<Cart> cp = CartRepository.getAllCartProducts(userId);
             DateTime now = DateTime.Now;
+
+            HeaderTransaction transactionHeader = TransactionFactory.CreateHeader(userId, now, paymentID);
+            int headerId = TransactionRepository.AddTransactionHeader(transactionHeader).ID;
             for(int i = 0; i < cp.Count(); i++)
             {
-                HeaderTransaction transactionHeader = TransactionFactory.CreateHeader(userId, now, paymentID);
-                int headerId = TransactionRepository.AddTransactionHeader(transactionHeader).ID;
 
                 DetailTransaction transactionDetail = TransactionFactory.CreateDetail(headerId, cp[i].ProductID, cp[i].Quantity);
                 TransactionRepository.AddTransactionDetail(transactionDetail);
             }
             CartRepository.deleteCartProductByUser(cp);
-;
+        }
+
+        public static List<HeaderTransaction> GetAllTransactionsList()
+        {
+            return TransactionRepository.GetAllTransactions();
+        }
+
+        public static List<HeaderTransaction> GetAllTransactionsListByID(int userID)
+        {
+            return TransactionRepository.GetAllTransactionsByUserID(userID);
         }
     }
 }
