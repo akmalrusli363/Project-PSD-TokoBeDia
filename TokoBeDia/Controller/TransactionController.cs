@@ -23,5 +23,10 @@ namespace TokoBeDia.Controller
         {
             return TransactionHandler.GetAllTransactionsListByID(userID);
         }
+
+        public static TransactionDatas GenerateTransactionLogs(List<HeaderTransaction> transactionList)
+        {
+            return TransactionHandler.GenerateTransactionLogs(transactionList);
+        }
     }
 }
