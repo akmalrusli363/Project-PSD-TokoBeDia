@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Controller;
-using TokoBeDia.Handler;
 
 namespace TokoBeDia.View.Carts
 {
@@ -33,7 +32,7 @@ namespace TokoBeDia.View.Carts
         {
             int id = Int32.Parse((sender as LinkButton).CommandArgument);
             int userID = Int32.Parse(Session["user"].ToString());
-            CartHandler.deleteCartProduct(id,userID);
+            CartController.deleteCartProductByID(id,userID);
             GridView1.DataBind();
         }
 
