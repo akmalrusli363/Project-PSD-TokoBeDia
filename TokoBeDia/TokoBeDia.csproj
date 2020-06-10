@@ -253,7 +253,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Singleton\DBSingleton.cs" />
-    <Compile Include="Repository\TransactionHistory.cs" />
     <Compile Include="TransactionReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

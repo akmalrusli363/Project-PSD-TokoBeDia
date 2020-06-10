@@ -8,14 +8,14 @@ namespace TokoBeDia.Controller
 {
     public class TransactionHistoryController
     {
-        public static List<TransactionHistory> getAllTransactionHistoryById(int userId)
+        public static Object getAllTransactionHistoryById(int userId)
         {
-            return TransactionHistoryHandler.getAllTransactionHistoryById(userId).ToList();
+            return TransactionHistoryHandler.getAllTransactionHistoryById(userId);
         }
 
-        public static List<TransactionHistory> getAllTransactionHistory()
+        public static Object getAllTransactionHistory()
         {
-            return TransactionHistoryHandler.getAllTransactionHistory().ToList();
+            return TransactionHistoryHandler.getAllTransactionHistory();
         }
     }
 }

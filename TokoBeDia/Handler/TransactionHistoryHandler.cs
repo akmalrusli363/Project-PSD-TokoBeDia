@@ -8,12 +8,12 @@ namespace TokoBeDia.Handler
 {
     public class TransactionHistoryHandler
     {
-        public static List<TransactionHistory> getAllTransactionHistoryById(int userId)
+        public static Object getAllTransactionHistoryById(int userId)
         {
             return TransactionHistoryRepository.getAllTransactionHistoryById(userId);
         }
 
-        public static List<TransactionHistory> getAllTransactionHistory()
+        public static Object getAllTransactionHistory()
         {
             return TransactionHistoryRepository.getAllTransactionHistory();
         }

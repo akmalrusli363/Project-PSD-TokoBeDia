@@ -10,7 +10,7 @@ namespace TokoBeDia.Repository
     {
         private static DatabaseEntities db = TokoBeDia.Singleton.DBSingleton.getInstance();
 
-        public static List<TransactionHistory> getAllTransactionHistoryById(int userId)
+        public static Object getAllTransactionHistoryById(int userId)
         {
             var queryTransactionHistory = (from ht in db.HeaderTransactions
                     join dt in db.DetailTransactions
@@ -20,7 +20,7 @@ namespace TokoBeDia.Repository
                     join pt in db.PaymentTypes
                     on ht.PaymentTypeID equals pt.PaymentTypeID
                     where ht.UserID == userId
-                    select new TransactionHistory
+                    select new 
                     {
                         transactionId = ht.ID,
                         transactionDate = ht.Date,
@@ -32,7 +32,7 @@ namespace TokoBeDia.Repository
             return queryTransactionHistory.ToList();
         }
 
-        public static List<TransactionHistory> getAllTransactionHistory()
+        public static Object getAllTransactionHistory()
         {
             var queryTransactionHistory = (from ht in db.HeaderTransactions
                                            join dt in db.DetailTransactions
@@ -41,7 +41,7 @@ namespace TokoBeDia.Repository
                                            on dt.ProductID equals p.ID
                                            join pt in db.PaymentTypes
                                            on ht.PaymentTypeID equals pt.PaymentTypeID
-                                           select new TransactionHistory
+                                           select new 
                                            {
                                                transactionId = ht.ID,
                                                transactionDate = ht.Date,
