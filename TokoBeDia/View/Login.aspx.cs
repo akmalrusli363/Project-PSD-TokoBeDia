@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Controller;
-using TokoBeDia.Handler;
 using TokoBeDia.Model;
 
 namespace TokoBeDia.View
@@ -21,7 +20,7 @@ namespace TokoBeDia.View
             else if (rememberUserCookie != null 
                 && !String.IsNullOrEmpty(rememberUserCookie.Value)) {
                 String[] rememberUser = rememberUserCookie.Value.ToString().Split('\\');
-                User login = UserHandler.login(rememberUser[0], rememberUser[1]);
+                User login = UserController.DoLogin(rememberUser);
                 Session["user"] = login.ID;
                 Response.Redirect("Home.aspx");
             }

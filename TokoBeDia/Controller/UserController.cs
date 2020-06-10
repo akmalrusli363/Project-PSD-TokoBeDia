@@ -10,6 +10,10 @@ namespace TokoBeDia.Controller
 {
     public class UserController
     {
+        public static User DoLogin(String[] rememberUser)
+        {
+            return UserHandler.login(rememberUser[0], rememberUser[1]);
+        }
         public static List<User> getAllUsers()
         {
             return UserHandler.getAllUsers();
