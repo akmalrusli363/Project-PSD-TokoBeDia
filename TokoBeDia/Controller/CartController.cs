@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using TokoBeDia.Handler;
 using TokoBeDia.Model;
-using TokoBeDia.Repository;
 
 namespace TokoBeDia.Controller
 {
@@ -44,6 +43,7 @@ namespace TokoBeDia.Controller
                 return "";
             }
         }
+
         public static String DoUpdateCart(int qty, int productId, int userId)
         {
             int productStock = ProductHandler.getProductByID(productId).Stock;
@@ -80,9 +80,15 @@ namespace TokoBeDia.Controller
 
             return "";
         }
-        public static void deleteCartProductByID(int id, int userID)
+
+        public static void DoDeleteCart(int id, int userID)
         {
             CartHandler.deleteCartProduct(id, userID);
+        }
+
+        public static Cart getCartProductByUserID(int productid, int userId)
+        {
+            return CartHandler.getCartProduct(productid, userId);
         }
     }
 }

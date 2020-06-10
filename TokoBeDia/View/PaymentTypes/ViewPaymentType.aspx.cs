@@ -7,9 +7,6 @@ using System.Web.UI.WebControls;
 using TokoBeDia.Controller;
 using TokoBeDia.Model;
 
-// hati-hati, dilarang keras akses module repository tanpa buat handler dan controller lho!
-using TokoBeDia.Repository;
-
 namespace TokoBeDia.View.PaymentTypes
 {
     public partial class ViewPaymentType : System.Web.UI.Page

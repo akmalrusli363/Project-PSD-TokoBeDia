@@ -7,9 +7,6 @@ using System.Web.UI.WebControls;
 using TokoBeDia.Model;
 using TokoBeDia.Controller;
 
-// hati-hati, dilarang keras akses module repository tanpa buat handler dan controller lho!
-using TokoBeDia.Repository;
-
 namespace TokoBeDia.View.Carts
 {
     public partial class UpdateCart : System.Web.UI.Page
@@ -40,7 +37,7 @@ namespace TokoBeDia.View.Carts
                 currentProduct = ProductController.getProductByID(productID);
                 ProductType currProductType = ProductTypeController.getProductTypeByID(currentProduct.ProductTypeID);
                 int userId = Int32.Parse(Session["user"].ToString());
-                Cart cart = CartRepository.getCartProductByUserID(productID, userId);
+                Cart cart = CartController.getCartProductByUserID(productID, userId);
                 ProductNameBox.Text = currentProduct.Name;
                 PriceBox.Text = currentProduct.Price.ToString();
                 StockBox.Text = currentProduct.Stock.ToString();

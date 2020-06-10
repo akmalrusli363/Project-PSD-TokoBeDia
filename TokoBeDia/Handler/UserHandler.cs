@@ -84,7 +84,7 @@ namespace TokoBeDia.Handler
             {
                 return (u != null && u.Role.ID == 1);
             }
-            catch (NullReferenceException e)
+            catch (NullReferenceException)
             {
                 return false;
             }

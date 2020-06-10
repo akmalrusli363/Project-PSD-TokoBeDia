@@ -32,7 +32,7 @@ namespace TokoBeDia.View.Carts
         {
             int id = Int32.Parse((sender as LinkButton).CommandArgument);
             int userID = Int32.Parse(Session["user"].ToString());
-            CartController.deleteCartProductByID(id,userID);
+            CartController.DoDeleteCart(id,userID);
             GridView1.DataBind();
         }
 
