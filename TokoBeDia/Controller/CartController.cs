@@ -80,5 +80,9 @@ namespace TokoBeDia.Controller
 
             return "";
         }
+        public static void deleteCartProductByID(int id, int userID)
+        {
+            CartHandler.deleteCartProduct(id, userID);
+        }
     }
 }
