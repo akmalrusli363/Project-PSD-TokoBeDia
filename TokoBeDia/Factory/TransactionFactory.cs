@@ -8,7 +8,7 @@ namespace TokoBeDia.Factory
 {
     public class TransactionFactory
     {
-        public static HeaderTransaction CreateHeader(int userId, DateTime transactionDate,int paymentID)
+        public static HeaderTransaction CreateHeaderTransaction(int userId, DateTime transactionDate,int paymentID)
         {
             return new HeaderTransaction()
             {
@@ -18,7 +18,7 @@ namespace TokoBeDia.Factory
             };
         }
 
-        public static DetailTransaction CreateDetail(int transactionid, int productId, int qty)
+        public static DetailTransaction CreateDetailTransaction(int transactionid, int productId, int qty)
         {
             return new TokoBeDia.Model.DetailTransaction()
             {

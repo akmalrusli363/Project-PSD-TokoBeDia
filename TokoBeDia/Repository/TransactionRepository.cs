@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TokoBeDia.Factory;
 using TokoBeDia.Model;
 
 namespace TokoBeDia.Repository
@@ -65,6 +66,16 @@ namespace TokoBeDia.Repository
                 }
             }
             return newDatas;
+        }
+
+        public static HeaderTransaction CreateHeaderTransaction(int userId, DateTime transactionDate, int paymentID)
+        {
+            return TransactionFactory.CreateHeaderTransaction(userId, transactionDate, paymentID);
+        }
+
+        public static DetailTransaction CreateDetailTransaction(int transactionid, int productId, int qty)
+        {
+            return TransactionFactory.CreateDetailTransaction(transactionid, productId, qty);
         }
     }
 }
