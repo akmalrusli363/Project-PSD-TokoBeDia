@@ -31,26 +31,18 @@ namespace TokoBeDia.View.Profiles
             string newPassword = NewPasswordBox.Text;
             string confirmPassword = ConfirmPasswordBox.Text;
 
-            if (!oldPassword.Equals(userLoggedIn.Password)) {
-                ErrorMessage.Text = "Invalid current password!";
-                return;
-            } if (confirmPassword.Equals(newPassword)) {
-                ErrorMessage.Text = "Confirm password isn't match with new password!";
-                return;
-            }
+            string error = UserController.updatePassword(userLoggedIn, oldPassword, newPassword, confirmPassword);
 
-
-            try {
-                Repository.UserRepository.updatePassword(userLoggedIn, newPassword);
+            if (error == "")
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(),
+                    "alertMessage", "alert('Update password successful!');", true);
+                Response.Redirect("/Profile.aspx");
             }
-            catch (Exception ex) {
-                Console.WriteLine(ex.ToString());
-                ErrorMessage.Text = "Database update on server failure, please try again!";
-                return;
+            else
+            {
+                ErrorMessage.Text = error;
             }
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(),
-                "alertMessage", "alert('Update password successful!');", true);
-            Response.Redirect("/Profile.aspx");
         }
     }
 }

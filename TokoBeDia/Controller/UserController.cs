@@ -160,6 +160,30 @@ namespace TokoBeDia.Controller
             } return "";
         }
 
+        public static string updatePassword(User user, string oldPassword, string newPassword, string confirmPassword)
+        {
+            if (!oldPassword.Equals(user.Password))
+            {
+                return "Invalid current password!";
+            }
+            if (confirmPassword.Equals(newPassword))
+            {
+                return "Confirm password isn't match with new password!";
+            }
+
+            try
+            {
+                UserHandler.updatePassword(user.ID, newPassword);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return "Database update on server failure, please try again!";
+            }
+
+            return "";
+        }
+
         public static bool isAdmin(int id)
         {
             return UserHandler.isAdmin(id);
