@@ -57,7 +57,7 @@ Untuk bagian-bagian yang telah dikerjakan, edit file ini dengan mencentang bagia
   + [x] Insert Product Type
   + [x] Update Product Type
   + [x] Profile
-  + [ ] Transaction Report
+  + [x] Transaction Report
   + [x] Update Profile
   + [x] Change Password
 
